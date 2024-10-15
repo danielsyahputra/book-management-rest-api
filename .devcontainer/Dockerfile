@@ -1,52 +1,15 @@
-FROM ubuntu:24.04
+FROM alpine:latest
 
-ARG BOOST_VERSION=1.86.0
-ARG CMAKE_VERSION=3.30.4
-ARG NUM_JOBS=4
+RUN apk update && apk upgrade
 
-ENV DEBIAN_FRONTEND=noninteractive
+RUN apk add --no-cache g++ git make cmake bash
 
-# Install package dependencies
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        build-essential \
-        software-properties-common \
-        autoconf \
-        automake \
-        libtool \
-        pkg-config \
-        ca-certificates \
-        libssl-dev \
-        wget \
-        git \
-        curl \
-        language-pack-en \
-        locales \
-        locales-all \
-        vim \
-        gdb \
-        valgrind && \
-    apt-get clean
+WORKDIR /service
 
-# System locale
-ENV LC_ALL=id_ID.UTF-8
-ENV LANG=id_ID.UTF-8
-ENV LANGUAGE=id_ID.UTF-8
+COPY install-oatpp.sh .
 
-# Install CMake
-RUN cd /tmp && \
-    wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}.tar.gz && \
-    tar xzf cmake-${CMAKE_VERSION}.tar.gz && \
-    cd cmake-${CMAKE_VERSION} && \
-    ./bootstrap && \
-    make -j${NUM_JOBS} && \
-    make install && \
-    rm -rf /tmp/*
-
-COPY .. /service
-
-WORKDIR /service/utility
+RUN chmod +x install-oatpp.sh
 
 RUN ./install-oatpp.sh Release
 
-EXPOSE 9999 9999
+WORKDIR /service
