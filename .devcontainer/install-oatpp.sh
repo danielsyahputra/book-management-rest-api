@@ -47,6 +47,7 @@ cd ../../
 install_module $BUILD_TYPE oatpp
 install_module $BUILD_TYPE oatpp-swagger
 install_module $BUILD_TYPE oatpp-sqlite
+install_module $BUILD_TYPE oatpp-postgresql
 
 cd ../
 rm -rf tmp

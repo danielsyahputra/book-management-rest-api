@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/usr/local/include/oatpp-1.4.0/oatpp",
+                "/usr/local/include/oatpp-1.4.0/oatpp-sqlite",
+                "/usr/local/include/oatpp-1.4.0/oatpp-swagger"
+
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
