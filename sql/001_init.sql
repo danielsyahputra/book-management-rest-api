@@ -1,4 +1,4 @@
-CREATE TABLE AppUser (
+CREATE TABLE if NOT EXISTS AppUser (
     id          INTEGER PRIMARY KEY,
     username    VARCHAR UNIQUE,
     email       VARCHAR UNIQUE,
