@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "oatpp"
-    ]
+    ],
+    "files.associations": {
+        "chrono": "cpp"
+    }
 }
