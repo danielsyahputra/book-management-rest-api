@@ -12,7 +12,7 @@ class BookDb: public oatpp::orm::DbClient {
         BookDb(const std::shared_ptr<oatpp::orm::Executor>& executor): oatpp::orm::DbClient(executor) {
             oatpp::orm::SchemaMigration migration(executor);
             OATPP_LOGd("BookDB", "Migration file path: {}", DATABASE_MIGRATIONS "/002_init.sql");
-            migration.addFile(1, DATABASE_MIGRATIONS "/002_init.sql");
+            migration.addFile(2, DATABASE_MIGRATIONS "/002_init.sql");
             migration.migrate();
 
             auto version = executor->getSchemaVersion();
@@ -30,7 +30,7 @@ class BookDb: public oatpp::orm::DbClient {
             "UPDATE Book SET "
             "title = :book.title, "
             "author = :book.author, "
-            "publishedData = :book.publishedDate, "
+            "publishedDate = :book.publishedDate, "
             "description = :book.description, "
             "isAvailable = :book.isAvailable "
             "WHERE id = :book.id;",

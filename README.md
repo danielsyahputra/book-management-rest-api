@@ -4,6 +4,7 @@ TODO:
 
 - [x] DevContainer development support
 - [x] Basic CRUD
+- [x] Work as expected
 - [ ] Configurable project
 - [ ] Dockerized Project
 - [ ] Unittest

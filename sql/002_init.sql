@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS Book (
     author TEXT NOT NULL,
     publishedDate TEXT NOT NULL,
     description TEXT,
-    isAvailable BOOLEAN NOT NULL DEFAULT TRUE
+    isAvailable BOOLEAN NOT NULL DEFAULT 1
 );
 
 INSERT INTO Book
-(title, author, publishedDate, description, isAvailable) VALUES ("book1", "This is Book One", "Daniel", "2024-10-25", "This is Book One", "true")
+(title, author, publishedDate, description, isAvailable) VALUES ("book1", "Daniel", "2024-10-25", "This is Book One", 1)
