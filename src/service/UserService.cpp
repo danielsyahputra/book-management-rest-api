@@ -1,4 +1,3 @@
-
 #include "UserService.hpp"
 
 oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto) {
@@ -38,7 +37,7 @@ oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oa
     oatpp::UInt32 countToFetch = limit;
 
     if(limit > 10) {
-    countToFetch = 10;
+        countToFetch = 10;
     }
 
     auto dbResult = database->getAllUsers(offset, countToFetch);

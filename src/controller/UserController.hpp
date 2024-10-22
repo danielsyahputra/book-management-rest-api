@@ -9,15 +9,17 @@
 
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
-class UserController: public ApiController {
+class UserController: public oatpp::web::server::api::ApiController {
     public:
-        UserController(OATPP_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers)):ApiController(apiContentMappers){}
+        UserController(OATPP_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers))
+        : oatpp::web::server::api::ApiController(apiContentMappers)
+        {}
     private:
         UserService userService;
     public:
         static std::shared_ptr<UserController> createShared(
             OATPP_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers)
-        ) {
+        ){
             return std::make_shared<UserController>(apiContentMappers);
         }
 
@@ -30,8 +32,8 @@ class UserController: public ApiController {
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
         }
-        ENDPOINT("POST", "users", createUser, BODY_DTO(oatpp::Object<UserDto>, UserDto)) {
-            return createDtoResponse(Status::CODE_200, userService.createUser(UserDto));
+        ENDPOINT("POST", "users", createUser, BODY_DTO(oatpp::Object<UserDto>, userDto)) {
+            return createDtoResponse(Status::CODE_200, userService.createUser(userDto));
         }
 
         ENDPOINT_INFO(putUser) {
@@ -64,7 +66,7 @@ class UserController: public ApiController {
             info->pathParams["userId"].description = "User Identifier";
         }
         ENDPOINT("GET", "users/{userId}", getUserById,
-                PATH(Int32, userId))
+            PATH(Int32, userId))
         {
             return createDtoResponse(Status::CODE_200, userService.getUserById(userId));
         }
@@ -93,7 +95,7 @@ class UserController: public ApiController {
             info->pathParams["userId"].description = "User Identifier";
         }
         ENDPOINT("DELETE", "users/{userId}", deleteUser,
-                PATH(Int32, userId))
+            PATH(Int32, userId))
         {
             return createDtoResponse(Status::CODE_200, userService.deleteUserById(userId));
         }

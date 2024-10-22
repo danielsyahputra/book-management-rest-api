@@ -29,7 +29,7 @@ public:
       "    <meta charset=utf-8/>"
       "  </head>"
       "  <body>"
-      "    <p>Hello CRUD example project!</p>"
+      "    <p>Book Management RESTful API</p>"
       "    <a href='swagger/ui'>Checkout Swagger-UI page</a>"
       "  </body>"
       "</html>";

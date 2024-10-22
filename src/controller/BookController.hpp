@@ -8,9 +8,10 @@
 
 #include OATPP_CODEGEN_BEGIN(ApiController)
 
-class BookController: public ApiController {
+class BookController: public oatpp::web::server::api::ApiController {
     public:
-        BookController(OATPP_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers)):ApiController(apiContentMappers){}
+        BookController(OATPP_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers))
+        :oatpp::web::server::api::ApiController(apiContentMappers){}
     private:
         BookService bookService;
     public:
@@ -29,8 +30,8 @@ class BookController: public ApiController {
             info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
         }
 
-        ENDPOINT("POST", "books", createBook, BODY_DTO(oatpp::Object<BookDto>, BookDto)) {
-            return createDtoResponse(Status::CODE_200, BookService.createBook(BookDto));
+        ENDPOINT("POST", "books", createBook, BODY_DTO(oatpp::Object<BookDto>, bookDto)) {
+            return createDtoResponse(Status::CODE_200, bookService.createBook(bookDto));
         }
 
         ENDPOINT_INFO(putBook) {
@@ -46,10 +47,10 @@ class BookController: public ApiController {
         }
         ENDPOINT("PUT", "books/{bookId}", putBook,
                 PATH(Int32, bookId),
-                BODY_DTO(Object<BookDto>, BookDto))
+                BODY_DTO(Object<BookDto>, bookDto))
         {
-            BookDto->id = bookId;
-            return createDtoResponse(Status::CODE_200, bookService.updateBook(BookDto));
+            bookDto->id = bookId;
+            return createDtoResponse(Status::CODE_200, bookService.updateBook(bookDto));
         }
 
 
@@ -62,10 +63,10 @@ class BookController: public ApiController {
 
             info->pathParams["bookId"].description = "Book Identifier";
         }
-        ENDPOINT("GET", "books/{bookId}", getBooById,
+        ENDPOINT("GET", "books/{bookId}", getBookById,
                 PATH(Int32, bookId))
         {
-            return createDtoResponse(Status::CODE_200, bookService.getBooById(bookId));
+            return createDtoResponse(Status::CODE_200, bookService.getBookById(bookId));
         }
 
 
@@ -91,8 +92,8 @@ class BookController: public ApiController {
 
             info->pathParams["bookId"].description = "Book Identifier";
         }
-        ENDPOINT("DELETE", "Books/{bookId}", deleteBook,
-                PATH(Int32, bookId))
+        ENDPOINT("DELETE", "books/{bookId}", deleteBook,
+            PATH(Int32, bookId))
         {
             return createDtoResponse(Status::CODE_200, bookService.deleteBookById(bookId));
         }

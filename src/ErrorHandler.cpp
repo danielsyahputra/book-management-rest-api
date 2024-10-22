@@ -5,11 +5,14 @@ ErrorHandler::ErrorHandler(const std::shared_ptr<oatpp::web::mime::ContentMapper
     : m_mappers(mappers)
 {}
 
-std::shared_ptr<ErrorHandler::OutgoingResponse> ErrorHandler::renderError(const HttpConnectionHandler stacktrace) {
+std::shared_ptr<ErrorHandler::OutgoingResponse> ErrorHandler::renderError(const HttpServerErrorStacktrace& stacktrace) {
     Status status = stacktrace.status;
-    if (status.description == nullptr) {
+    if(status.description == nullptr) {
         status.description = "Unknown";
     }
+
+    oatpp::data::stream::BufferOutputStream ss;
+
     for(auto& s : stacktrace.stack) {
         ss << s << "\n";
     }

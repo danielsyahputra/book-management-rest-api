@@ -3,11 +3,10 @@
 #include "controller/StaticController.hpp"
 #include "controller/BookController.hpp"
 
-#include "oatpp/web/server/HttpConnectionHandler.hpp"
+#include "oatpp-swagger/Controller.hpp"
 #include "oatpp/network/Server.hpp"
-#include "oatpp/network/tcp/server/ConnectionProvider.hpp"
 
-#include <iostream>?>
+#include <iostream>
 
 void run() {
     AppComponent components;
@@ -36,7 +35,7 @@ void run() {
     dbConnectionProvider->stop();
 }
 
-int main(int argc, const char* argv[]) {
+int main(int argc, const char * argv[]) {
     oatpp::Environment::init();
     
     run();

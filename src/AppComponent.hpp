@@ -15,6 +15,7 @@
 class AppComponent {
     public:
         SwaggerComponent swaggerComponent;
+        DatabaseComponent databaseComponent;
 
         OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers)([] {
 
