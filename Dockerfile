@@ -2,15 +2,13 @@ FROM alpine:latest
 
 RUN apk update && apk upgrade
 
-RUN apk add g++
-
-RUN apk add git
-RUN apk add make
-RUN apk add cmake
+RUN apk add --no-cache g++ git make cmake bash
 
 ADD . /service
 
 WORKDIR /service/utility
+
+RUN chmod +x install-oatpp.sh
 
 RUN ./install-oatpp.sh Release
 

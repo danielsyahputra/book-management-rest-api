@@ -6,7 +6,7 @@ TODO:
 - [x] Basic CRUD
 - [x] Work as expected
 - [ ] Configurable project
-- [ ] Dockerized Project
+- [x] Dockerized Project
 - [ ] Unittest
 - [ ] Authentication
 - [ ] MySQL database support

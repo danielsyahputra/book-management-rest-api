@@ -1,0 +1,18 @@
+services:
+  rest-api:
+    container_name: rest-api-cpp
+    image: rest-api-cpp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9999:9999"
+    volumes:
+      - ./db.sqlite:/service/db.sqlite
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9999/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
