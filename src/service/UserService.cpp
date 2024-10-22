@@ -1,16 +1,23 @@
+
 #include "UserService.hpp"
 
-oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto){
+oatpp::Object<UserDto> UserService::createUser(const oatpp::Object<UserDto>& dto) {
+
     auto dbResult = database->createUser(dto);
     OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
+
     auto userId = oatpp::sqlite::Utils::getLastInsertRowId(dbResult->getConnection());
+
     return getUserById((v_int32) userId);
+
 }
 
 oatpp::Object<UserDto> UserService::updateUser(const oatpp::Object<UserDto>& dto) {
+
     auto dbResult = database->updateUser(dto);
     OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
     return getUserById(dto->id);
+
 }
 
 oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oatpp::provider::ResourceHandle<oatpp::orm::Connection>& connection) {
@@ -27,12 +34,14 @@ oatpp::Object<UserDto> UserService::getUserById(const oatpp::Int32& id, const oa
 }
 
 oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oatpp::UInt32& offset, const oatpp::UInt32& limit) {
-    oatpp::UInt32 numToFetch = limit;
 
-    if (limit > 10) {
-        numToFetch = 10;
+    oatpp::UInt32 countToFetch = limit;
+
+    if(limit > 10) {
+    countToFetch = 10;
     }
-    auto dbResult = database->getAllUsers(offset, numToFetch);
+
+    auto dbResult = database->getAllUsers(offset, countToFetch);
     OATPP_ASSERT_HTTP(dbResult->isSuccess(), Status::CODE_500, dbResult->getErrorMessage());
 
     auto items = dbResult->fetch<oatpp::Vector<oatpp::Object<UserDto>>>();
@@ -44,6 +53,7 @@ oatpp::Object<PageDto<oatpp::Object<UserDto>>> UserService::getAllUsers(const oa
     page->items = items;
 
     return page;
+
 }
 
 oatpp::Object<StatusDto> UserService::deleteUserById(const oatpp::Int32& userId) {

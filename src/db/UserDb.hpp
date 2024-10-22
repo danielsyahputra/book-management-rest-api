@@ -18,40 +18,35 @@ class UserDb: public oatpp::orm::DbClient {
             OATPP_LOGd("UserDB", "Migration - OK. Version={}", version);
         }
 
-        QUERY(createUser, 
-            "INSERT INTO AppUser",
-            "(username, email, password, role) VALUES "
-            "(:user.username, :user:email, :user.password, :user.role);",
-            PARAM(oatpp::Object<UserDto>, user)
-        )
+        QUERY(createUser,
+        "INSERT INTO AppUser"
+        "(username, email, password, role) VALUES "
+        "(:user.username, :user.email, :user.password, :user.role);",
+        PARAM(oatpp::Object<UserDto>, user))
 
         QUERY(updateUser,
-            "UPDATE AppUser"
-            "SET "
-            " username=:user.username"
-            " email=:user.email"
-            " password=:user.password"
-            " role=:user.role"
-            "WHERE "
-            " id=:user.id;",
-            PARAM(oatpp::Object<UserDto>, user)
-        )
+        "UPDATE AppUser "
+        "SET "
+        " username=:user.username, "
+        " email=:user.email, "
+        " password=:user.password, "
+        " role=:user.role "
+        "WHERE "
+        " id=:user.id;",
+        PARAM(oatpp::Object<UserDto>, user))
 
         QUERY(getUserById,
-            "SELECT * FROM AppUser WHERE id:id;",
-            PARAM(oatpp::Int32, id)
-        )
+        "SELECT * FROM AppUser WHERE id=:id;",
+        PARAM(oatpp::Int32, id))
 
         QUERY(getAllUsers,
-            "SELECT * FROM AppUser LIMIT :limit OFFSET :offset;",
-            PARAM(oatpp::UInt32, offset),
-            PARAM(oatpp::UInt32, limit)
-        )
+        "SELECT * FROM AppUser LIMIT :limit OFFSET :offset;",
+        PARAM(oatpp::UInt32, offset),
+        PARAM(oatpp::UInt32, limit))
 
         QUERY(deleteUserById,
-            "DELETE FROM AppUser WHERE id=:id;",
-            PARAM(oatpp::Int32, id)
-        )
+        "DELETE FROM AppUser WHERE id=:id;",
+        PARAM(oatpp::Int32, id))
 };
 
 #include OATPP_CODEGEN_END(DbClient)

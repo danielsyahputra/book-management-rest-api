@@ -17,7 +17,7 @@ public:
 public:
 
   static std::shared_ptr<StaticController> createShared(
-    OATPP_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers) // Inject ContentMappers
+    OATPP_COMPONENT(std::shared_ptr<oatpp::web::mime::ContentMappers>, apiContentMappers)
   ){
     return std::make_shared<StaticController>(apiContentMappers);
   }
@@ -40,6 +40,6 @@ public:
 
 };
 
-#include OATPP_CODEGEN_END(ApiController) //<- End Codegen
+#include OATPP_CODEGEN_END(ApiController) 
 
 #endif
