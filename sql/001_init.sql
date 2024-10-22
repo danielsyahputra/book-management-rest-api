@@ -1,5 +1,5 @@
-CREATE TABLE if NOT EXISTS AppUser (
-    id          INTEGER PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS AppUser (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
     username    VARCHAR UNIQUE,
     email       VARCHAR UNIQUE,
     password    VARCHAR,

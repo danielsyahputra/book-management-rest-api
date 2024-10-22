@@ -11,7 +11,8 @@ class BorrowDb : public oatpp::orm::DbClient {
 	public:
 		BorrowDb(const std::shared_ptr<oatpp::orm::Executor>& executor) : oatpp::orm::DbClient(executor) {
 			oatpp::orm::SchemaMigration migration(executor);
-			migration.addFile(1, DATABASE_MIGRATIONS "/003_borrow.sql");
+			OATPP_LOGd("BorrowDB", "Migration file path: {}", DATABASE_MIGRATIONS "/003_init.sql");
+			migration.addFile(1, DATABASE_MIGRATIONS "/003_init.sql");
 			migration.migrate();
 
 			auto version = executor->getSchemaVersion();
