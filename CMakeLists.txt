@@ -49,7 +49,7 @@ add_definitions(
         ## SQLite database file
         -DDATABASE_FILE="${CMAKE_CURRENT_SOURCE_DIR}/db.sqlite"
 
-        # -DTESTDATABASE_FILE="${CMAKE_CURRENT_SOURCE_DIR}/test-db.sqlite"
+        -DTESTDATABASE_FILE="${CMAKE_CURRENT_SOURCE_DIR}/test-db.sqlite"
 
         -DDATABASE_MIGRATIONS="${CMAKE_CURRENT_SOURCE_DIR}/sql"
 )
