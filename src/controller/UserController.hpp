@@ -25,6 +25,7 @@ class UserController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(createUser) {
             info->summary = "Create new User";
+            info->tags = std::list<oatpp::String>({"Users"});
 
             info->addConsumes<Object<UserDto>>("application/json");
 
@@ -38,6 +39,8 @@ class UserController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(putUser) {
             info->summary = "Update User by userId";
+            info->tags = std::list<oatpp::String>({"Users"});
+
 
             info->addConsumes<Object<UserDto>>("application/json");
 
@@ -58,6 +61,8 @@ class UserController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getUserById) {
             info->summary = "Get one User by userId";
+            info->tags = std::list<oatpp::String>({"Users"});
+
 
             info->addResponse<Object<UserDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
@@ -74,6 +79,8 @@ class UserController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getUsers) {
             info->summary = "get all stored users";
+            info->tags = std::list<oatpp::String>({"Users"});
+
 
             info->addResponse<oatpp::Object<UsersPageDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
@@ -88,6 +95,8 @@ class UserController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(deleteUser) {
             info->summary = "Delete User by userId";
+            info->tags = std::list<oatpp::String>({"Users"});
+
 
             info->addResponse<Object<StatusDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");

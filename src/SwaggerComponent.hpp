@@ -12,7 +12,7 @@ class SwaggerComponent {
 
             builder
             .setTitle("Book Management Service")
-            .setDescription("BOOK Management RESTful API")
+            .setDescription("Book Management RESTful API")
             .setVersion("1.0")
             .setContactName("Daniel Syahputra")
             .setContactUrl("https://github.com/danielsyahputra")

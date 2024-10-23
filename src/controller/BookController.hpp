@@ -23,6 +23,8 @@ class BookController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(createBook) {
             info->summary = "Create a new book";
+            info->tags = std::list<oatpp::String>({"Books"});
+
             info->addConsumes<Object<BookDto>>("application/json");
 
             info->addResponse<Object<BookDto>>(Status::CODE_200, "application/json");
@@ -36,6 +38,7 @@ class BookController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(putBook) {
             info->summary = "Update Book by bookId";
+            info->tags = std::list<oatpp::String>({"Books"});
 
             info->addConsumes<Object<BookDto>>("application/json");
 
@@ -56,6 +59,7 @@ class BookController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getBookById) {
             info->summary = "Get one Book by bookId";
+            info->tags = std::list<oatpp::String>({"Books"});
 
             info->addResponse<Object<BookDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
@@ -72,6 +76,7 @@ class BookController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getBooks) {
             info->summary = "get all stored books";
+            info->tags = std::list<oatpp::String>({"Books"});
 
             info->addResponse<oatpp::Object<BooksPageDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");
@@ -86,6 +91,7 @@ class BookController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(deleteBook) {
             info->summary = "Delete Book by bookId";
+            info->tags = std::list<oatpp::String>({"Books"});
 
             info->addResponse<Object<StatusDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_500, "application/json");

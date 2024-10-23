@@ -25,6 +25,7 @@ class BorrowController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(createBorrow) {
             info->summary = "Create new borrow";
+            info->tags = std::list<oatpp::String>({"Borrows"});
 
             info->addConsumes<Object<BorrowDto>>("application/json");
 
@@ -38,6 +39,7 @@ class BorrowController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(updateBorrow) {
             info->summary = "Update borrow by borrowId";
+            info->tags = std::list<oatpp::String>({"Borrows"});
             info->addConsumes<Object<BorrowDto>>("application/json");
 
             info->addResponse<Object<BorrowDto>>(Status::CODE_200, "application/json");
@@ -55,6 +57,7 @@ class BorrowController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getBorrowById) {
             info->summary = "Get one borrow by borrowId";
+            info->tags = std::list<oatpp::String>({"Borrows"});
 
             info->addResponse<Object<BorrowDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
@@ -69,6 +72,7 @@ class BorrowController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getBorrows) {
             info->summary = "Get all borrows";
+            info->tags = std::list<oatpp::String>({"Borrows"});
 
             info->addResponse<Object<BorrowDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
@@ -84,6 +88,7 @@ class BorrowController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(deleteBorrow) {
             info->summary = "Delete borrow by borrowId";
+            info->tags = std::list<oatpp::String>({"Borrows"});
 
             info->addResponse<Object<BorrowDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
@@ -98,6 +103,7 @@ class BorrowController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getBorrowsByUserId) {
             info->summary = "Get all borrows by userId";
+            info->tags = std::list<oatpp::String>({"Borrows"});            
 
             info->addResponse<Object<BorrowDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
@@ -114,6 +120,7 @@ class BorrowController: public oatpp::web::server::api::ApiController {
 
         ENDPOINT_INFO(getBorrowsByBookId) {
             info->summary = "Get all borrows by bookId";
+            info->tags = std::list<oatpp::String>({"Borrows"});
 
             info->addResponse<Object<BorrowDto>>(Status::CODE_200, "application/json");
             info->addResponse<Object<StatusDto>>(Status::CODE_404, "application/json");
