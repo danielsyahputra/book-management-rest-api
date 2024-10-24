@@ -68,7 +68,12 @@ add_executable(crud-test
         tests/app/TestDatabaseComponent.hpp
         tests/app/TestComponent.hpp
         tests/UserControllerTest.hpp
-        tests/UserControllerTest.cpp)
+        tests/UserControllerTest.cpp
+        tests/BookControllerTest.hpp
+        tests/BookControllerTest.cpp
+        tests/BorrowControllerTest.hpp
+        tests/BorrowControllerTest.cpp
+)
 target_link_libraries(crud-test crud-lib)
 
 enable_testing()
