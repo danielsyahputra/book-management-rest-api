@@ -1,4 +1,4 @@
-# Book Management System REST API
+# REST API with C++
 
 TODO:
 
@@ -7,9 +7,10 @@ TODO:
 - [x] Work as expected
 - [ ] Configurable project
 - [x] Dockerized Project
-- [ ] Unittest
+- [x] Unittest
 - [ ] Authentication
 - [ ] MySQL database support
 - [ ] PostgresQL database support
 - [ ] Mongo database support
-- [ ] TBA
+- [ ] Github Workflows
+- [ ] etc
