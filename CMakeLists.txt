@@ -62,4 +62,14 @@ endif()
 add_executable(crud-exe src/App.cpp)
 target_link_libraries(crud-exe crud-lib)
 
-target_link_libraries(crud-lib)
+add_executable(crud-test
+        tests/tests.cpp
+        tests/app/TestClient.hpp
+        tests/app/TestDatabaseComponent.hpp
+        tests/app/TestComponent.hpp
+        tests/UserControllerTest.hpp
+        tests/UserControllerTest.cpp)
+target_link_libraries(crud-test crud-lib)
+
+enable_testing()
+add_test(project-tests crud-test)

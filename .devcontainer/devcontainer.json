@@ -1,35 +1,35 @@
 {
-	"name": "C++",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
+  "name": "C++",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
 
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			"settings": {},
-			"extensions": [
-				"streetsidesoftware.code-spell-checker",
-                "ms-vscode.cpptools",
-                "ms-vscode.cpptools-extension-pack",
-                "ms-vscode.cpptools-themes",
-                "twxs.cmake",
-                "ms-vscode.cmake-tools"
-			]
-		}
-	},
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      "settings": {},
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools-themes",
+        "twxs.cmake",
+        "ms-vscode.cmake-tools"
+      ]
+    }
+  },
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [9999, 8888, 8080],
-	"appPort": ["9999:9999"],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [9999, 8888, 8080],
+  "appPort": ["9999:9999"],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "gcc -v"
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "gcc -v"
 
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
 }
