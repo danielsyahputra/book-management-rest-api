@@ -16,6 +16,7 @@ add_library(crud-lib
         src/dto/UserDto.hpp
         src/dto/BookDto.hpp
         src/dto/BorrowDto.hpp
+        src/dto/ConfigDto.hpp
         src/service/UserService.cpp
         src/service/UserService.hpp
         src/service/BookService.hpp
@@ -26,7 +27,9 @@ add_library(crud-lib
         src/DatabaseComponent.hpp
         src/SwaggerComponent.hpp
         src/ErrorHandler.cpp
-        src/ErrorHandler.hpp)
+        src/ErrorHandler.hpp
+        src/ConfigurationComponent.hpp
+)
 
 
 target_include_directories(crud-lib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")

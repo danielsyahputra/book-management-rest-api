@@ -3,6 +3,7 @@
 #include "controller/StaticController.hpp"
 #include "controller/BookController.hpp"
 #include "controller/BorrowController.hpp"
+#include "utils/dotenv.h"
 
 #include "oatpp-swagger/Controller.hpp"
 #include "oatpp/network/Server.hpp"
@@ -10,9 +11,12 @@
 #include <iostream>
 
 void run() {
+    dotenv::init();
+
     AppComponent components;
 
     OATPP_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, router);
+    OATPP_COMPONENT(oatpp::Object<ConfigDto>, config);
 
     oatpp::web::server::api::Endpoints docEndpoints;
 
@@ -29,7 +33,7 @@ void run() {
 
     oatpp::network::Server server(connectionProvider, connectionHandler);
   
-    OATPP_LOGd("Server", "Running on port {}...", connectionProvider->getProperty("port").toString())
+    OATPP_LOGd("AppServer", "Running on {}:{}", config->host->c_str(), std::to_string(static_cast<unsigned int>(config->port)));
     
     server.run();
 

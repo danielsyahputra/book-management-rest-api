@@ -4,6 +4,7 @@
 #include "SwaggerComponent.hpp"
 #include "DatabaseComponent.hpp"
 #include "ErrorHandler.hpp"
+#include "ConfigurationComponent.hpp"
 
 #include "oatpp/web/server/HttpConnectionHandler.hpp"
 #include "oatpp/web/server/HttpRouter.hpp"
@@ -14,6 +15,7 @@
 
 class AppComponent {
     public:
+        ConfigurationComponent configurationComponent;
         SwaggerComponent swaggerComponent;
         DatabaseComponent databaseComponent;
 
@@ -30,7 +32,8 @@ class AppComponent {
         }());
 
         OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::network::ServerConnectionProvider>, serverConnectionProvider)([] {
-            return oatpp::network::tcp::server::ConnectionProvider::createShared({"0.0.0.0", 9999, oatpp::network::Address::IP_4});
+            OATPP_COMPONENT(oatpp::Object<ConfigDto>, config);
+            return oatpp::network::tcp::server::ConnectionProvider::createShared({config->host, config->port, oatpp::network::Address::IP_4});
         }());
 
         OATPP_CREATE_COMPONENT(std::shared_ptr<oatpp::web::server::HttpRouter>, httpRouter)([] {
