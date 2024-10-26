@@ -2,6 +2,8 @@ FROM alpine:latest
 
 RUN apk update && apk upgrade
 
+RUN apk add postgresql-dev
+
 RUN apk add --no-cache g++ git make cmake bash
 
 ADD . /service

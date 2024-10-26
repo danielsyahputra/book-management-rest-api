@@ -35,14 +35,16 @@ add_library(crud-lib
 target_include_directories(crud-lib PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
 
 
-find_package(oatpp          1.4.0 REQUIRED)
-find_package(oatpp-swagger  1.4.0 REQUIRED)
-find_package(oatpp-sqlite   1.4.0 REQUIRED)
+find_package(oatpp              1.4.0 REQUIRED)
+find_package(oatpp-swagger      1.4.0 REQUIRED)
+find_package(oatpp-sqlite       1.4.0 REQUIRED)
+find_package(oatpp-postgresql   1.4.0 REQUIRED)
 
 target_link_libraries(crud-lib
         PUBLIC oatpp::oatpp
         PUBLIC oatpp::oatpp-swagger
         PUBLIC oatpp::oatpp-sqlite
+        PUBLIC oatpp::oatpp-postgresql
 )
 
 
