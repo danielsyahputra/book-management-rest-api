@@ -6,7 +6,10 @@
                 "/usr/local/include/oatpp-1.4.0/oatpp",
                 "/usr/local/include/oatpp-1.4.0/oatpp-sqlite",
                 "/usr/local/include/oatpp-1.4.0/oatpp-swagger",
-                "/usr/local/include/oatpp-1.4.0/oatpp-postgresql"
+                "/usr/local/include/oatpp-1.4.0/oatpp-postgresql",
+                "${workspaceFolder}/src",
+                "/usr/include/postgresql",
+                "/usr/local/include/oatpp-1.4.0/oatpp-sqlite/sqlite"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
