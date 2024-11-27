@@ -1,0 +1,23 @@
+name: Build and Publish image to Docker Hub
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src'
+      - 'Dockerfile'
+
+jobs:
+  publish_images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build image
+        run: |
+          docker build . -t danielsyahputra13/rest-api-cpp:latest
+      - name: push image to docker hub
+        run: |
+          docker login -u danielsyahputra13 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push danielsyahputra13/rest-api-cpp:latest
