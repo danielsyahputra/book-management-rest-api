@@ -1,3 +1,5 @@
+[![Build and Publish Image to Docker Hub](https://github.com/danielsyahputra/rest-api-cpp-example/actions/workflows/build-docker.yaml/badge.svg)](https://github.com/danielsyahputra/rest-api-cpp-example/actions/workflows/build-docker.yaml)
+
 # REST API with C++
 
 TODO:
@@ -12,5 +14,5 @@ TODO:
 - [ ] MySQL database support
 - [ ] PostgresQL database support
 - [ ] Mongo database support
-- [ ] Github Workflows
+- [x] Github Workflows
 - [ ] etc
